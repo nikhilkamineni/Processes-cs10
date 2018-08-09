@@ -1,0 +1,2 @@
+PARENT is writing to the file
+CHILD is writing to the file

@@ -9,7 +9,19 @@
 
 int main(void)
 {
-    // Your code here
+    int child_p = fork();
+
+    if (child_p < 0) {
+        printf("Fork failed!");
+        exit(1);
+    }
+    else if (child_p == 0) {
+        printf("Hello!\n");
+    }
+    else {
+        wait(&child_p);
+        printf("Goodbye!\n");
+    }
 
     return 0;
 }

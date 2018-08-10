@@ -10,7 +10,23 @@
 
 int main(void)
 {
-    // Your code here    
+    int child_p = fork();
+
+    if (child_p < 0) {
+        printf("Fork failed!");
+        exit(1);
+    }
+    else if (child_p == 0) {
+        char* args[3];
+        args[0] = "/bin/ls";
+        args[1] = "-la";
+        args[2] = NULL;
+        execvp(args[0], args);
+    }
+    else {
+        wait(&child_p);
+        printf("Parent process here!\n");
+    }
 
     return 0;
 }
